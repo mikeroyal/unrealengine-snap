@@ -1,6 +1,6 @@
-name: digikam
-summary:  Advanced digital photo management. 
-description: Makes importing and organizing digital photos a 'snap'.
+name: UnrealEngine
+summary:  game engine. 
+description: the most powerful creation engine.
   
 adopt-info: devmode # use 'strict' once you have the right plugs and slots
 
@@ -8,26 +8,26 @@ grade: stable
 confinement: devmode
 
 architectures:
+  - build-on: i386
   - build-on: amd64
-  - build-on: armhf
-  - build-on: arm64
+  
 
 apps:
-  digikam:
-    command: bin/digikam
+  UnrealEngine:
+    command: bin/UnrealEngine
     plugs:
       - home
       - network
       - removable-media
 
 parts:
-digikam:
+UnrealEngine:
     plugin: 
-    source: https://github.com/KDE/digikam.git
+    source: https://github.com/EpicGames/UnrealEngine.git
     source-type: git
     override-pull: |
-     git clone https://github.com/KDE/digikam.git src/github.com/KDE/digikam
-       cd src/github.com/KDE/digikam
+     git clone https://github.com/EpicGames/UnrealEngine.git src/github.com/EpicGames/UnrealEngine
+       cd src/github.com/EpicGames/UnrealEngine
       last_committed_tag="$(git describe --tags --abbrev=0)"
       last_committed_tag_ver="$(echo ${last_committed_tag} | sed 's/v//')"
       last_released_tag="$(snap info $SNAPCRAFT_PROJECT_NAME | awk '$1 == "beta:" { print $2 }')"
@@ -40,12 +40,12 @@ digikam:
       snapcraftctl set-version "$(git describe --tags | sed 's/v//')"
       override-build: |
       export GOPATH=$PWD
-      cd src/github.com/KDE/digikam
+      cd src/github.com/EpicGames/UnrealEngine
       env CGO_ENABLED=0 GOOS=linux \
       go build --ldflags "-s -w \
-        -X 'github.com/KDE/digikam/version.GitCommit=$(git rev-list -1 HEAD)' \
-        -X 'github.com/KDE/digikam/version.Version=$(git describe --tags --abbrev=0)'" \
-        -a -installsuffix cgo -o $SNAPCRAFT_PART_INSTALL/bin/digikam
+        -X 'github.com/EpicGames/UnrealEngine/version.GitCommit=$(git rev-list -1 HEAD)' \
+        -X 'github.com/EpicGames/UnrealEngine/version.Version=$(git describe --tags --abbrev=0)'" \
+        -a -installsuffix cgo -o $SNAPCRAFT_PART_INSTALL/bin/UnrealEngine
     build-snaps:
       - 
     build-packages:
