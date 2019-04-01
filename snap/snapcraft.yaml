@@ -1,7 +1,8 @@
 name: unrealengine
-version: 4.21
-summary:  game engine. 
-description: the most powerful creation engine.
+version: '4.21'
+summary:  Unreal Engine is a Multi-platform 2D and 3D game engine. 
+description: A complete suite of creation tools designed to meet ambitious artistic visions 
+while being flexible enough to ensure success for teams of all sizes.
   
 adopt-info: devmode # use 'strict' once you have the right plugs and slots
 
