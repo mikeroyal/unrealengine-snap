@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Unreal Engine
+GenericName=Unreal game engine
+Comment=The most powerful creation engine
+Exec=unrealengine -p
+Icon=${SNAP}/meta/gui/unrealengine.png
+Terminal=false
+Type=Application
+Categories=Development;IDE;
