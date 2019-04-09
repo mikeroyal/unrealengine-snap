@@ -6,9 +6,8 @@ while being flexible enough to ensure success for teams of all sizes.
   
 adopt-info: devmode # use 'strict' once you have the right plugs and slots
 
-grade: stable
-confinement: devmode
-
+grade: devmode
+base: core18
 architectures:
   - build-on: i386
   - build-on: amd64
