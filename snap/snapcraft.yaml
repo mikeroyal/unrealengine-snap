@@ -1,10 +1,11 @@
 name: unrealengine
-version: '4.22'
+version: "4.22"
 summary:  Unreal Engine is a Multi-platform 2D and 3D game engine. 
 description: A complete suite of creation tools designed to meet ambitious artistic visions 
 while being flexible enough to ensure success for teams of all sizes.
   
 confinement: devmode
+base: core18
 
 architectures:
   - build-on: i386
@@ -20,18 +21,33 @@ apps:
       - opengl
     environment:
       LD_LIBRARY_PATH: "$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio:$LD_LIBRARY_PATH"
-
+      "DISABLE_WAYLAND": "1"
 
 parts:
   unrealengine:
     after: [desktop-glib-only]
-    plugin: dump
+    plugin: autotools
     source-type: git
     source: https://github.com/EpicGames/UnrealEngine.git
 
     build-packages:
       - g++
       - make
+      - build-essential 
+      - cmake 
+      - dos2unix 
+      - clang-3.8 
+      - mono-mcs mono-devel 
+      - mono-xbuild mono-dmcs 
+      - mono-reference-assemblies-4.0 
+      - libmono-system-data-datasetextensions4.0-cil 
+      - libmono-system-web-extensions4.0-cil 
+      - libmono-system-management4.0-cil 
+      - libmono-system-xml-linq4.0-cil 
+      - libfreetype6-dev
+      - libgtk-3-dev 
+      - libmono-microsoft-build-tasks-v4.0-4.0-cil 
+      - xdg-user-dirs
       - libsdl1.2-dev
       - libpng-dev
       - libsdl-net1.2-dev
